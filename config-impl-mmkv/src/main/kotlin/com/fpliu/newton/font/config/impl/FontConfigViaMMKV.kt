@@ -4,7 +4,7 @@ import android.content.Context
 import com.fpliu.newton.font.config.api.IFontConfig
 import com.tencent.mmkv.MMKV
 
-class FontSettingViaMMKV(
+class FontConfigViaMMKV(
     appContext: Context,
     private val key: String = "appFontUri"
 ) : IFontConfig {

@@ -68,7 +68,7 @@ class FontListActivity : PullableRecyclerViewActivity<Font>() {
     override fun onItemClick(holder: ItemViewHolder, position: Int, item: Font) {
         val fontFile = File(item.path)
         if (fontFile.exists()) {
-            startFontSettingActivity(item)
+            FontConfigActivity.start(this, item)
         } else {
             downloadFontThenStartFontSettingActivity(item, fontFile)
         }
@@ -88,16 +88,10 @@ class FontListActivity : PullableRecyclerViewActivity<Font>() {
             .doFinally { progressDialog.dismiss() }
             .autoDisposable(disposeOnDestroy())
             .subscribe({
-                startFontSettingActivity(it)
+                FontConfigActivity.start(this, it)
             }, {
                 it.printStackTrace()
                 showToast("下载失败")
             })
-    }
-
-    private fun startFontSettingActivity(item: Font) {
-        Font(item.name, item.type, item.path, item.size).let {
-            FontConfigActivity.start(this, it)
-        }
     }
 }

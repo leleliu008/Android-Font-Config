@@ -18,7 +18,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.fpliu.kotlin.util.jdk.touch
 import com.fpliu.newton.crash.CrashHandler
+import com.fpliu.newton.font.config.api.FontConfigFactory
 import com.fpliu.newton.font.config.api.applyFontFromConfig
+import com.fpliu.newton.font.config.impl.FontConfigViaMMKV
 import com.fpliu.newton.font.config.ui.HTTP_BASE_URL
 import com.fpliu.newton.http.RetrofitRequest
 import com.fpliu.newton.http.converter.StringConverterFactory
@@ -184,12 +186,15 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
             ErrorHandler.onError(e)
         }
 
+        //如果要使用MMKV保存信息的话，需要设置下面的这句代码，默认使用SharedPreference保存信息
+        FontConfigFactory.setInstance(FontConfigViaMMKV(this))
+
         //应用字体
-try {
-    applyFontFromConfig("assets:Alibaba_PuHuiTi_Light.otf")
-} catch (e: Exception) {
-    e.printStackTrace()
-}
+        try {
+            applyFontFromConfig("assets:Alibaba_PuHuiTi_Light.otf")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

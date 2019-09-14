@@ -2,8 +2,8 @@
 使用`kotlin`开发的一个字体配置库
 
 
-<img src="images/1.png" style="width:400px"/>
-<img src="images/2.png" style="width:400px"/>
+<img src="images/1.png" width="360" height="640" alt="效果图1" />
+<img src="images/2.png" width="360" height="640" alt="效果图2" />
 
 
 ### 引用
@@ -19,6 +19,9 @@ implementation("com.fpliu:Android-Font-Config-impl-mmkv")
 ### 使用
 在`Application.onCreate()`中应用字体：
 ```
+//如果要使用MMKV保存信息的话，需要设置下面的这句代码，默认使用SharedPreference保存信息
+FontConfigFactory.setInstance(FontConfigViaMMKV(this))
+
 try {
     applyFontFromConfig("assets:Alibaba_PuHuiTi_Light.otf")
 } catch (e: Exception) {
@@ -26,6 +29,17 @@ try {
 }
 ```
 传入的参数是默认的字体的`uri`，`uri = type:path`，`type`支持`assets`和`file`两种。
+
+
+如果只是设置死某个字体，不需要让用户选择用哪个字体的话，
+设置成如下：
+```
+try {
+    applyFont("assets:Alibaba_PuHuiTi_Light.otf")
+} catch (e: Exception) {
+    e.printStackTrace()
+}
+```
 
 
 ### 用到的第三方库
