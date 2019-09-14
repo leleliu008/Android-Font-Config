@@ -2,8 +2,8 @@
 使用`kotlin`开发的一个字体配置库
 
 
-<img src="images/1.png" width="360" height="640" alt="效果图1" />
-<img src="images/2.png" width="360" height="640" alt="效果图2" />
+<img src="images/1.png" width="360" height="640" alt="效果图1" style="display: inline-block"/>
+<img src="images/2.png" width="360" height="640" alt="效果图2" style="display: inline-block"/>
 
 
 ### 引用
