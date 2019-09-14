@@ -45,3 +45,4 @@ proguard/
 *.iml
 *.iws
 *.ipr
+dump.txt
