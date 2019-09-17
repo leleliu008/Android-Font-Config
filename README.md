@@ -81,7 +81,7 @@ startActivity(FontListActivity::class)
 
 ### 打印日志
 ```
-adb logcat | grep "VP_"
+adb logcat | grep "FC_"
 ```
 
 ### 查看崩溃日志
