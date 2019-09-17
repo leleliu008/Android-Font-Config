@@ -1,3 +1,10 @@
+import com.android.build.api.transform.Format
+import com.android.build.api.transform.QualifiedContent
+import com.android.build.api.transform.Transform
+import com.android.build.api.transform.TransformInvocation
+import com.android.build.gradle.BaseExtension
+import java.util.Collections
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -15,7 +22,7 @@ android {
         minSdkVersion(18)
         targetSdkVersion(22)
         applicationId = "com.fpliu.newton.font.config.sample"
-        versionCode = 1568453813
+        versionCode = 1568703491
         versionName = "1.0.0"
 
         //只需要支持中文和英文即可，其他语言不必支持
@@ -156,7 +163,7 @@ android {
 }
 
 dependencies {
-    api(project(":config-ui"))
+    api(project(":ui"))
 
     //内存泄漏检测工具LeakCanary
     //https://github.com/square/leakcanary
@@ -177,3 +184,49 @@ dependencies {
     api("com.fpliu:Android-StatusBar-Util:1.0.1")
     api("com.fpliu:Android-Font-Assets-Alibaba_PuHuiTi_Light:1.0.0")
 }
+
+class MyTransform : Transform() {
+    override fun getName(): String = "MyTransform"
+
+    override fun getInputTypes(): MutableSet<QualifiedContent.ContentType>
+        = Collections.singleton(QualifiedContent.DefaultContentType.CLASSES)
+
+    override fun isIncremental(): Boolean = false
+
+    override fun getScopes(): MutableSet<in QualifiedContent.Scope>
+        = Collections.singleton(QualifiedContent.Scope.PROJECT)
+
+    override fun transform(transformInvocation: TransformInvocation) {
+        val context = transformInvocation.context
+        println("path = ${context.path}")
+        println("temporaryDir = ${context.temporaryDir.absolutePath}")
+        println("variantName = ${context.variantName}")
+
+        val inputs = transformInvocation.inputs
+        val refInputs = transformInvocation.referencedInputs
+
+        val outputProvider = transformInvocation.outputProvider
+        val outputDir = outputProvider.getContentLocation(name, outputTypes, scopes, Format.DIRECTORY)
+        println("outputDir = $outputDir")
+
+        for (input in inputs) {
+            for (directoryInput in input.directoryInputs) {
+                val inputFile = directoryInput.file
+                println("inputFile = ${inputFile.absolutePath}")
+            }
+            println("------------------------")
+            for (jarInput in input.jarInputs) {
+                val inputFile = jarInput.file
+                println("inputFile = ${inputFile.absolutePath}")
+            }
+        }
+    }
+}
+
+class MyPlugin : Plugin<Project> {
+    override fun apply(project: Project) {
+        project.extensions.getByType(BaseExtension::class.java).registerTransform(MyTransform())
+    }
+}
+
+//apply<MyPlugin>()

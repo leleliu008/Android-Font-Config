@@ -21,6 +21,11 @@ implementation("com.fpliu:Android-Font-Config-api")
 ```
 implementation("com.fpliu:Android-Font-Config-impl-mmkv")
 ```
+使用`ui`：
+```
+implementation("com.fpliu:Android-Font-Config-ui")
+```
+
 
 ### 使用
 在`Application.onCreate()`中应用字体：
@@ -47,6 +52,10 @@ try {
 }
 ```
 
+启动字体列表界面：
+```
+startActivity(FontListActivity::class)
+```
 
 ### 用到的第三方库
 1. [RxJava2](https://github.com/ReactiveX/RxJava)

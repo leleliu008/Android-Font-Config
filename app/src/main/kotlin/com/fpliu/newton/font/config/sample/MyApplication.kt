@@ -74,7 +74,7 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
         LeakCanary.install(this)
 
         val processName = getCurrentProcessName()
-        Log.i(TAG, "VP_MyApplication: processName = $processName")
+        Log.i(TAG, "FC_MyApplication: processName = $processName")
 
         val packageName = packageName
 
@@ -86,7 +86,7 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
 
         registerActivityLifecycleCallbacks(this)
 
-        Logger.init(this, "VP_", true)
+        Logger.init(this, "FC_", true)
 
         CrashHandler.init(this, null)
 

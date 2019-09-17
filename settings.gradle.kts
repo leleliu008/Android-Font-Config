@@ -1,7 +1,7 @@
 include(":app")
-include(":config-ui")
-include(":config-api")
-include(":config-impl-mmkv")
+include(":ui")
+include(":api")
+include(":impl-mmkv")
 
 
 pluginManagement {
