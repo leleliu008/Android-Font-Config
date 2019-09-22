@@ -22,7 +22,7 @@ android {
         minSdkVersion(18)
         targetSdkVersion(22)
         applicationId = "com.fpliu.newton.font.config.sample"
-        versionCode = 1568703491
+        versionCode = 1569152103
         versionName = "1.0.0"
 
         //只需要支持中文和英文即可，其他语言不必支持

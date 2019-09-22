@@ -46,3 +46,6 @@ proguard/
 *.iws
 *.ipr
 dump.txt
+mapping.txt
+seeds.txt
+usage.txt
