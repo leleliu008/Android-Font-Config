@@ -4,7 +4,7 @@ plugins {
 
     //https://github.com/leleliu008/BintrayUploadGradlePlugin
     //https://plugins.gradle.org/plugin/com.fpliu.bintray
-    id("com.fpliu.bintray").version("1.0.8")
+    id("com.fpliu.bintray").version("1.0.13")
 
     //用于构建jar和pom
     //https://github.com/dcendents/android-maven-gradle-plugin

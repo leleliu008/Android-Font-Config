@@ -181,7 +181,7 @@ dependencies {
     api("com.umeng.analytics:analytics:6.1.3")
 
     api("com.fpliu:Android-CrashHandler:1.0.0")
-    api("com.fpliu:Android-StatusBar-Util:1.0.1")
+    api("com.fpliu:Android-StatusBar-Util:1.0.2")
     api("com.fpliu:Android-Font-Assets-Alibaba_PuHuiTi_Light:1.0.0")
 }
 
